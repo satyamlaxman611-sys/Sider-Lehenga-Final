@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f8f9fb">
+  <title>Payment Success — SIDER LEHENGA</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="siteHeaderMount"></div>
+
+  <main class="container" style="padding:18px 0 10px;">
+    <div class="card fade-in" style="padding:14px;">
+      <div style="font-weight:900; letter-spacing:-.02em; font-size:20px;">Payment successful</div>
+      <div style="margin-top:8px; color:var(--muted);">Your order is confirmed.</div>
+
+      <div id="successMeta" class="pill" style="margin-top:12px; border-color: rgba(212,175,55,.45);"></div>
+
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn primary" href="products.html">Continue shopping</a>
+        <a class="btn" href="contact.html">Contact support</a>
+      </div>
+    </div>
+  </main>
+
+  <div id="siteFooterMount"></div>
+
+  <script src="js/shared.js"></script>
+  <script>
+    SL.mountLayout({ active: "success" });
+    const p = new URLSearchParams(location.search);
+    const orderId = p.get("orderId") || "";
+    const paymentId = p.get("paymentId") || "";
+    const el = document.getElementById("successMeta");
+    if (el) el.textContent = `Order: ${orderId} • Payment: ${paymentId}`;
+  </script>
+</body>
+</html>
