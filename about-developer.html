@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f8f9fb">
+  <title>About Developer — Abrar Khan</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="siteHeaderMount"></div>
+
+  <main class="container" style="padding:18px 0 26px;">
+    <section class="card fade-in" style="padding:14px; overflow:hidden;">
+      <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+        <div style="flex:1; min-width: 260px;">
+          <div style="font-weight:900; letter-spacing:-.03em; font-size: clamp(28px, 4vw, 44px);">Abrar Khan</div>
+          <div style="color:var(--muted); margin-top:6px;">From Kendrapara, Odisha, India</div>
+          <div class="pill" style="margin-top:12px; border-color: rgba(212,175,55,.45);">IT Student • Certified Web Developer • AI Expert</div>
+
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn primary" id="hireBtn" type="button">Hire</button>
+            <button class="btn" id="helpBtn" type="button">Help</button>
+            <button class="btn" id="connectBtn" type="button">Connect</button>
+          </div>
+        </div>
+
+        <div style="width:min(520px, 100%);">
+          <div class="card" style="padding:12px; border-color: rgba(212,175,55,.35);">
+            <div style="font-weight:900; letter-spacing:-.02em;">3D glass card</div>
+            <div style="margin-top:8px; color:var(--muted); font-size:13px;">
+              Slow 360° rotation • Mouse/touch tilt • Mobile-safe fallback
+            </div>
+            <div style="margin-top:10px; border-radius:16px; overflow:hidden; border:1px solid rgba(230,232,236,.85); background:#0b1220;">
+              <canvas id="glassCanvas" style="display:block; width:100%; height: 280px;"></canvas>
+              <img id="glassFallback" src="assets/pictures/logo.png" alt="Abrar Khan card"
+                   style="display:none; width:100%; height: 280px; object-fit:cover; background:#fff;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-in" style="margin-top:12px; display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;">
+      ${["HTML","CSS","JavaScript","React","Git","GitHub","UI/UX","AI Tools"].map((s,i)=>`
+      <div class="card" style="padding:14px;">
+        <div style="font-weight:900;">${s}</div>
+        <div style="height:10px;"></div>
+        <div style="height:10px; border-radius:99px; background: rgba(230,232,236,.8); overflow:hidden;">
+          <div class="bar" data-p="${70 + (i%4)*7}" style="height:100%; width:0%; border-radius:99px; background: linear-gradient(90deg, rgba(212,175,55,.55), rgba(212,175,55,.20)); box-shadow: 0 0 30px rgba(212,175,55,.20);"></div>
+        </div>
+        <div class="small" style="margin-top:8px; color:var(--muted); font-size:12px;">Progress</div>
+      </div>`).join("")}
+    </section>
+
+    <section class="card fade-in" style="margin-top:12px; padding:14px;">
+      <div style="font-weight:900; letter-spacing:-.02em;">Agency: INSTAFORGEX</div>
+      <div style="margin-top:10px; color:var(--muted);">
+        Services: Frontend Development, Backend Development, UI/UX Design, Graphic Design, Logo Design, Content Writing, Social Media Management, AI Solutions
+      </div>
+      <div style="margin-top:12px;">
+        <a class="btn" href="https://devabrarkhan.github.io/instaforgex/" target="_blank" rel="noopener">Visit website</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="siteFooterMount"></div>
+
+  <script src="js/shared.js"></script>
+
+  <!-- Local three build (you must provide compatible non-module builds matching these filenames) -->
+  <script src="js/three/three.min.js"></script>
+  <script src="js/three/OrbitControls.js"></script>
+  <script src="js/three/glass-card.js"></script>
+
+  <script>
+    SL.mountLayout({active:"dev"});
+
+    // Animated progress bars
+    document.querySelectorAll(".bar[data-p]").forEach((el, idx) => {
+      const p = Math.max(10, Math.min(100, Number(el.getAttribute("data-p") || 75)));
+      setTimeout(() => { el.style.width = p + "%"; }, 120 + idx * 70);
+    });
+
+    // Contact routing logic
+    document.getElementById("hireBtn").addEventListener("click", () => {
+      window.open("https://docs.google.com/forms", "_blank", "noopener");
+    });
+    document.getElementById("helpBtn").addEventListener("click", () => {
+      window.open("https://wa.me/917359978388", "_blank", "noopener");
+    });
+    document.getElementById("connectBtn").addEventListener("click", () => {
+      window.open("https://www.instagram.com/_sider_lehenga_/", "_blank", "noopener");
+    });
+
+    // 3D init (fallback in glass-card.js if missing/slow)
+    window.SL_GlassCard && window.SL_GlassCard.init({
+      canvasId: "glassCanvas",
+      fallbackImgId: "glassFallback",
+      accent: 0xd4af37
+    });
+  </script>
+</body>
+</html>
