@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f8f9fb">
+  <title>Admin Login — SIDER LEHENGA</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body data-page="auth">
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">
+        <img src="../assets/pictures/logo.png" alt="SIDER LEHENGA logo">
+        <div>
+          <div class="name">SIDER LEHENGA</div>
+          <div class="sub">Admin Panel</div>
+        </div>
+      </a>
+      <span class="pill">Secure login</span>
+    </div>
+  </div>
+
+  <main class="container" style="padding:18px 0 30px;">
+    <div class="card" style="padding:14px; max-width:520px; margin: 0 auto;">
+      <div style="font-weight:900; letter-spacing:-.02em; font-size:18px;">Admin login</div>
+      <div style="color:var(--muted); margin-top:6px; font-size:13px;">Enter your admin credentials.</div>
+
+      <form id="adminLoginForm" style="margin-top:12px; display:flex; flex-direction:column; gap:10px;">
+        <input id="adminUser" class="input" type="text" placeholder="Username" autocomplete="username" required>
+        <input id="adminPass" class="input" type="password" placeholder="Password" autocomplete="current-password" required>
+        <div id="adminErr" style="display:none; color:#9a3412; font-size:13px;"></div>
+        <button class="btn primary" type="submit" style="justify-content:center;">Login</button>
+      </form>
+
+      <div style="margin-top:12px; color:var(--muted); font-size:12px;">
+        Tip: Keep your GitHub token only in Vercel Environment Variables.
+      </div>
+    </div>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
